@@ -65,12 +65,12 @@ const ContactForm: React.FC = () => {
   return (
     <motion.div 
       ref={ref}
-      className={`bg-white dark:bg-gray-900 rounded-xl p-8 shadow-lg reveal ${isActive ? 'active' : ''}`}
+      className={`bg-black dark:bg-black border border-gray-800 rounded-xl p-8 shadow-lg reveal ${isActive ? 'active' : ''}`}
       initial={{ opacity: 0, y: 30 }}
       animate={isActive ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.6, ease: "easeOut" }}
     >
-      <h3 className="text-2xl font-bold mb-6">Send Me a Message</h3>
+      <h3 className="text-2xl font-bold mb-6 text-white">Send Me a Message</h3>
       
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
@@ -85,7 +85,7 @@ const ContactForm: React.FC = () => {
                     <Input 
                       placeholder="Your name" 
                       {...field} 
-                      className="w-full px-4 py-3 border border-gray-300 dark:border-gray-700 rounded-md bg-white dark:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-accent"
+                      className="w-full px-4 py-3 border border-gray-700 rounded-md bg-black text-white focus:outline-none focus:ring-2 focus:ring-[#aaff00] focus:border-[#aaff00]"
                     />
                   </FormControl>
                   <FormMessage />
@@ -104,7 +104,7 @@ const ContactForm: React.FC = () => {
                       type="email" 
                       placeholder="your.email@example.com" 
                       {...field} 
-                      className="w-full px-4 py-3 border border-gray-300 dark:border-gray-700 rounded-md bg-white dark:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-accent"
+                      className="w-full px-4 py-3 border border-gray-700 rounded-md bg-black text-white focus:outline-none focus:ring-2 focus:ring-[#aaff00] focus:border-[#aaff00]"
                     />
                   </FormControl>
                   <FormMessage />
@@ -123,7 +123,7 @@ const ContactForm: React.FC = () => {
                   <Input 
                     placeholder="What is this regarding?" 
                     {...field} 
-                    className="w-full px-4 py-3 border border-gray-300 dark:border-gray-700 rounded-md bg-white dark:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-accent"
+                    className="w-full px-4 py-3 border border-gray-700 rounded-md bg-black text-white focus:outline-none focus:ring-2 focus:ring-[#aaff00] focus:border-[#aaff00]"
                   />
                 </FormControl>
                 <FormMessage />
@@ -142,7 +142,7 @@ const ContactForm: React.FC = () => {
                     rows={5} 
                     placeholder="Your message here..." 
                     {...field} 
-                    className="w-full px-4 py-3 border border-gray-300 dark:border-gray-700 rounded-md bg-white dark:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-accent"
+                    className="w-full px-4 py-3 border border-gray-700 rounded-md bg-black text-white focus:outline-none focus:ring-2 focus:ring-[#aaff00] focus:border-[#aaff00]"
                   />
                 </FormControl>
                 <FormMessage />
@@ -152,7 +152,7 @@ const ContactForm: React.FC = () => {
           
           <Button
             type="submit"
-            className="w-full px-6 py-3 bg-accent text-white rounded-md hover:bg-opacity-90 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+            className="w-full px-6 py-3 bg-[#aaff00] text-black rounded-md hover:bg-opacity-90 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 font-semibold"
             disabled={mutation.isPending}
           >
             {mutation.isPending ? "Sending..." : "Send Message"}
@@ -173,20 +173,20 @@ interface ContactInfoProps {
 const ContactInfo: React.FC<ContactInfoProps> = ({ icon, title, value, link }) => {
   return (
     <div className="flex items-start">
-      <div className="w-10 h-10 rounded-full bg-accent bg-opacity-10 flex items-center justify-center mr-4 flex-shrink-0">
+      <div className="w-10 h-10 rounded-full border border-[#aaff00] bg-black flex items-center justify-center mr-4 flex-shrink-0">
         {icon}
       </div>
       <div>
-        <h4 className="font-medium text-primary dark:text-white mb-1">{title}</h4>
+        <h4 className="font-medium text-white mb-1">{title}</h4>
         {link ? (
           <a 
             href={link} 
-            className="text-gray-700 dark:text-gray-300 hover:text-accent transition-colors"
+            className="text-gray-300 hover:text-[#aaff00] transition-colors"
           >
             {value}
           </a>
         ) : (
-          <p className="text-gray-700 dark:text-gray-300">{value}</p>
+          <p className="text-gray-300">{value}</p>
         )}
       </div>
     </div>
@@ -199,7 +199,7 @@ const SocialLinks: React.FC = () => {
     { icon: <Linkedin className="h-5 w-5" />, href: 'https://linkedin.com/in/harshvardhan-sarvaiya', ariaLabel: 'LinkedIn' },
     { icon: <Twitter className="h-5 w-5" />, href: 'https://twitter.com/harshvardhansinh', ariaLabel: 'Twitter' },
     { icon: <Instagram className="h-5 w-5" />, href: 'https://instagram.com/harshvardhansinh', ariaLabel: 'Instagram' },
-    { icon: <Mail className="h-5 w-5" />, href: 'mailto:contact@harshvardhansinh.dev', ariaLabel: 'Email' },
+    { icon: <Mail className="h-5 w-5" />, href: 'mailto:harshvardhansinh.work@gmail.com', ariaLabel: 'Email' },
   ];
   
   return (
@@ -208,7 +208,7 @@ const SocialLinks: React.FC = () => {
         <a 
           key={index}
           href={link.href} 
-          className="w-10 h-10 rounded-full bg-accent bg-opacity-10 flex items-center justify-center text-accent hover:bg-accent hover:text-white transition-colors duration-300"
+          className="w-10 h-10 rounded-full border border-[#aaff00] bg-black flex items-center justify-center text-[#aaff00] hover:bg-[#aaff00] hover:text-black transition-colors duration-300"
           target="_blank" 
           rel="noopener noreferrer"
           aria-label={link.ariaLabel}
@@ -228,29 +228,29 @@ const ContactInformation: React.FC = () => {
     <div>
       <motion.div 
         ref={infoRef}
-        className={`bg-white dark:bg-gray-900 rounded-xl p-8 shadow-lg mb-8 reveal ${infoActive ? 'active' : ''}`}
+        className={`bg-black dark:bg-black border border-gray-800 rounded-xl p-8 shadow-lg mb-8 reveal ${infoActive ? 'active' : ''}`}
         initial={{ opacity: 0, y: 30 }}
         animate={infoActive ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
       >
-        <h3 className="text-2xl font-bold mb-6">Contact Information</h3>
+        <h3 className="text-2xl font-bold mb-6 text-white">Contact Information</h3>
         <div className="space-y-4">
           <ContactInfo 
-            icon={<Mail className="h-5 w-5 text-accent" />} 
+            icon={<Mail className="h-5 w-5 text-[#aaff00]" />} 
             title="Email" 
-            value="harshvardhansinh@example.com" 
-            link="mailto:harshvardhansinh@example.com" 
+            value="harshvardhansinh.work@gmail.com" 
+            link="mailto:harshvardhansinh.work@gmail.com" 
           />
           
           <ContactInfo 
-            icon={<Phone className="h-5 w-5 text-accent" />} 
+            icon={<Phone className="h-5 w-5 text-[#aaff00]" />} 
             title="Phone" 
             value="+91 8022000056" 
             link="tel:+918022000056" 
           />
           
           <ContactInfo 
-            icon={<MapPin className="h-5 w-5 text-accent" />}
+            icon={<MapPin className="h-5 w-5 text-[#aaff00]" />}
             title="Location" 
             value="Baroda, Gujarat, India"
           />
@@ -259,12 +259,12 @@ const ContactInformation: React.FC = () => {
       
       <motion.div 
         ref={socialRef}
-        className={`bg-white dark:bg-gray-900 rounded-xl p-8 shadow-lg reveal ${socialActive ? 'active' : ''}`}
+        className={`bg-black dark:bg-black border border-gray-800 rounded-xl p-8 shadow-lg reveal ${socialActive ? 'active' : ''}`}
         initial={{ opacity: 0, y: 30 }}
         animate={socialActive ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
       >
-        <h3 className="text-2xl font-bold mb-6">Follow Me</h3>
+        <h3 className="text-2xl font-bold mb-6 text-white">Follow Me</h3>
         <SocialLinks />
       </motion.div>
     </div>

@@ -98,7 +98,7 @@ const SkillBar: React.FC<{ skill: Skill; index: number }> = ({ skill, index }) =
         <span className="font-medium">{skill.name}</span>
         <span className="text-sm text-accent">{skill.level}</span>
       </div>
-      <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
+      <div className="h-2 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
         <motion.div 
           className="h-full bg-accent rounded-full"
           initial={{ width: 0 }}
@@ -121,7 +121,7 @@ const SoftwareIcon: React.FC<{ software: Software; index: number }> = ({ softwar
       animate={isActive ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.5, delay: index * 0.05 }}
     >
-      <div className="w-16 h-16 bg-accent bg-opacity-10 rounded-full flex items-center justify-center mb-3">
+      <div className="w-16 h-16 bg-accent bg-opacity-10 dark:bg-opacity-20 rounded-full flex items-center justify-center mb-3">
         {software.icon}
       </div>
       <span className="text-center">{software.name}</span>
@@ -134,7 +134,7 @@ const Skills: React.FC = () => {
   const { ref: softwareRef, isActive: softwareActive } = useReveal();
   
   return (
-    <section id="skills" className="py-20 md:py-32 bg-neutral bg-opacity-10 dark:bg-opacity-5">
+    <section id="skills" className="py-20 md:py-32 bg-gray-100 dark:bg-gray-900">
       <div className="container mx-auto px-4 md:px-8">
         <SectionHeading 
           title="Skills & Expertise"
@@ -144,7 +144,7 @@ const Skills: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
           <motion.div 
             ref={techRef}
-            className={`bg-white dark:bg-gray-900 rounded-xl p-8 shadow-lg reveal ${techActive ? 'active' : ''}`}
+            className={`bg-white dark:bg-gray-800 rounded-xl p-8 shadow-lg reveal ${techActive ? 'active' : ''}`}
             initial={{ opacity: 0, y: 30 }}
             animate={techActive ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, ease: "easeOut" }}
@@ -165,7 +165,7 @@ const Skills: React.FC = () => {
           
           <motion.div 
             ref={softwareRef}
-            className={`bg-white dark:bg-gray-900 rounded-xl p-8 shadow-lg reveal ${softwareActive ? 'active' : ''}`}
+            className={`bg-white dark:bg-gray-800 rounded-xl p-8 shadow-lg reveal ${softwareActive ? 'active' : ''}`}
             initial={{ opacity: 0, y: 30 }}
             animate={softwareActive ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}

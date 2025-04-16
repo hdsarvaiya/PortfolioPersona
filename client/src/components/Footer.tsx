@@ -26,7 +26,7 @@ const Footer: React.FC = () => {
   };
 
   return (
-    <footer className="bg-primary text-white py-12">
+    <footer className="bg-gray-900 text-white py-12">
       <div className="container mx-auto px-4 md:px-8">
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="mb-6 md:mb-0">
@@ -37,7 +37,7 @@ const Footer: React.FC = () => {
             <p className="mt-2 text-gray-400">Software Developer & Tech Enthusiast</p>
             
             {/* Social Media Icons */}
-            <div className="flex space-x-4 mt-4">
+            <div className="flex space-x-4 mt-4 justify-start">
               {socialLinks.map((link, index) => (
                 <a 
                   key={index}

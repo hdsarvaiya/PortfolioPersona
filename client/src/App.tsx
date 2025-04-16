@@ -20,7 +20,7 @@ function App() {
   
   return (
     <QueryClientProvider client={queryClient}>
-      <div className={theme === 'dark' ? 'dark' : ''}>
+      <div className={`${theme === 'dark' ? 'dark' : ''} min-h-screen bg-background`}>
         <Router />
         <Toaster />
       </div>

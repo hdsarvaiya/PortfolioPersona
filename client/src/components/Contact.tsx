@@ -203,7 +203,7 @@ const SocialLinks: React.FC = () => {
   ];
   
   return (
-    <div className="flex space-x-4">
+    <div className="flex flex-wrap gap-4 justify-start">
       {socialLinks.map((link, index) => (
         <a 
           key={index}

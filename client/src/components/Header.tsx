@@ -56,7 +56,7 @@ const Header: React.FC = () => {
 
   return (
     <>
-      <header className={`fixed top-0 left-0 right-0 z-40 bg-white dark:bg-primary 
+      <header className={`fixed top-0 left-0 right-0 z-40 bg-white dark:bg-gray-900 
         ${scrolled ? 'bg-opacity-90 dark:bg-opacity-90 backdrop-blur-sm shadow-sm' : 'bg-opacity-100 dark:bg-opacity-100'} 
         transition-all duration-300`}>
         <div className="container mx-auto px-4 md:px-8 py-6">
@@ -94,7 +94,7 @@ const Header: React.FC = () => {
       <AnimatePresence>
         {isOpen && (
           <motion.div 
-            className="fixed inset-0 bg-white dark:bg-primary z-50 flex flex-col items-center justify-center space-y-8 md:hidden"
+            className="fixed inset-0 bg-white dark:bg-gray-900 z-50 flex flex-col items-center justify-center space-y-8 md:hidden"
             initial={{ x: '100%' }}
             animate={{ x: 0 }}
             exit={{ x: '100%' }}

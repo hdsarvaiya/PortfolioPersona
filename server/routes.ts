@@ -4,6 +4,7 @@ import { storage } from "./storage";
 import { insertMessageSchema, contactFormSchema } from "@shared/schema";
 import { ZodError } from "zod";
 import { fromZodError } from "zod-validation-error";
+import { sendEmail, formatContactFormHtml, formatContactFormText } from "./email";
 
 export async function registerRoutes(app: Express): Promise<Server> {
   // Contact form submission endpoint
@@ -20,10 +21,47 @@ export async function registerRoutes(app: Express): Promise<Server> {
         message: validatedData.message
       });
 
+      // Set the recipient email (your email)
+      const recipientEmail = "harshvardhansinh.work@gmail.com";
+      
+      // Format the email content
+      const htmlContent = formatContactFormHtml(
+        validatedData.name,
+        validatedData.email,
+        validatedData.subject,
+        validatedData.message
+      );
+      
+      const textContent = formatContactFormText(
+        validatedData.name,
+        validatedData.email,
+        validatedData.subject,
+        validatedData.message
+      );
+      
+      // Attempt to send email
+      let emailSent = false;
+      if (process.env.SENDGRID_API_KEY) {
+        emailSent = await sendEmail({
+          to: recipientEmail,
+          from: 'portfolio@harshvardhansinh.dev', // This must be a verified sender in SendGrid
+          subject: `New contact form submission: ${validatedData.subject}`,
+          html: htmlContent,
+          text: textContent
+        });
+        
+        if (!emailSent) {
+          console.warn("Email could not be sent, but form data was saved to database");
+        }
+      } else {
+        console.warn("SendGrid API key not set, email not sent, but form data was saved");
+      }
+
       // Return success response
       return res.status(200).json({
         success: true,
         message: "Message sent successfully",
+        emailSent: emailSent,
         data: message
       });
     } catch (error) {

@@ -167,7 +167,7 @@ const Experience: React.FC = () => {
   const { ref: eduRef, isActive: eduActive } = useReveal();
   
   return (
-    <section id="experience" className="py-20 md:py-32">
+    <section id="experience" className="py-20 md:py-32 bg-white dark:bg-gray-950">
       <div className="container mx-auto px-4 md:px-8">
         <SectionHeading 
           title="Experience & Education"

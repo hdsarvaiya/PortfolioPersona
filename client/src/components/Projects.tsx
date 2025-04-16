@@ -177,7 +177,7 @@ const LTProjects: React.FC = () => {
 
 const Projects: React.FC = () => {
   return (
-    <section id="projects" className="py-20 md:py-32 bg-neutral bg-opacity-10 dark:bg-opacity-5">
+    <section id="projects" className="py-20 md:py-32 bg-gray-100 dark:bg-gray-900">
       <div className="container mx-auto px-4 md:px-8">
         <SectionHeading 
           title="Featured Projects"

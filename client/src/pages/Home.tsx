@@ -1,31 +1,54 @@
-import { useEffect } from "react";
-import { motion } from "framer-motion";
-import Hero from "@/sections/Hero";
-import About from "@/sections/About";
-import Experience from "@/sections/Experience";
-import Projects from "@/sections/Projects";
-import Skills from "@/sections/Skills";
-import Contact from "@/sections/Contact";
+import React, { useEffect } from 'react';
+import CustomCursor from '@/components/CustomCursor';
+import Header from '@/components/Header';
+import Hero from '@/components/Hero';
+import Projects from '@/components/Projects';
+import Experience from '@/components/Experience';
+import Skills from '@/components/Skills';
+import Contact from '@/components/Contact';
+import Footer from '@/components/Footer';
 
-export default function Home() {
+const Home: React.FC = () => {
   useEffect(() => {
-    // Set document title
-    document.title = "Harshvardhansinh Sarvaiya | Portfolio";
+    // Initialize scroll reveal functionality
+    const revealElements = () => {
+      const reveals = document.querySelectorAll('.reveal');
+      
+      reveals.forEach(element => {
+        const windowHeight = window.innerHeight;
+        const elementTop = element.getBoundingClientRect().top;
+        const elementVisible = 150;
+        
+        if (elementTop < windowHeight - elementVisible) {
+          element.classList.add('active');
+        }
+      });
+    };
+    
+    window.addEventListener('scroll', revealElements);
+    window.addEventListener('load', revealElements);
+    
+    // Trigger initial reveal
+    revealElements();
+    
+    return () => {
+      window.removeEventListener('scroll', revealElements);
+      window.removeEventListener('load', revealElements);
+    };
   }, []);
 
   return (
-    <motion.div
-      initial="hidden"
-      animate="visible"
-      className="overflow-hidden"
-    >
-      <div id="top" className="h-0" aria-hidden="true"></div>
+    <div className="min-h-screen">
+      <CustomCursor />
+      <Header />
       <Hero />
-      <About />
-      <Experience />
       <Projects />
+      <Experience />
       <Skills />
       <Contact />
-    </motion.div>
+      <Footer />
+    </div>
   );
-}
+};
+
+export default Home;

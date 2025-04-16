@@ -5,34 +5,22 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-export function scrollToSection(sectionId: string) {
-  const element = document.getElementById(sectionId);
+export function scrollToElement(elementId: string) {
+  const element = document.getElementById(elementId);
   if (element) {
-    element.scrollIntoView({
-      behavior: "smooth"
-    });
+    element.scrollIntoView({ behavior: 'smooth' });
   }
 }
 
-// Format date
-export function formatDate(dateString: string) {
-  const options: Intl.DateTimeFormatOptions = { year: 'numeric', month: 'long' };
-  const date = new Date(dateString);
-  return date.toLocaleDateString('en-US', options);
+export function formatDate(date: Date): string {
+  return new Intl.DateTimeFormat('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  }).format(date);
 }
 
-// Get scroll percentage
-export function getScrollPercentage() {
-  const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-  return window.scrollY / height;
-}
-
-// Parse text with newlines
-export function parseTextWithNewlines(text: string) {
-  return text.split('\n').map((line, index) => (
-    <span key={index}>
-      {line}
-      {index !== text.split('\n').length - 1 && <br />}
-    </span>
-  ));
-}
+export const validateEmail = (email: string): boolean => {
+  const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return re.test(String(email).toLowerCase());
+};

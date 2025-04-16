@@ -1,5 +1,5 @@
 import React from 'react';
-import { Download } from 'lucide-react';
+import { Download, Github, Linkedin, Twitter, Mail, Instagram } from 'lucide-react';
 import { scrollToElement } from '@/lib/utils';
 
 const navItems = [
@@ -8,6 +8,14 @@ const navItems = [
   { name: 'Experience', href: '#experience' },
   { name: 'Skills', href: '#skills' },
   { name: 'Contact', href: '#contact' }
+];
+
+const socialLinks = [
+  { icon: <Github className="h-5 w-5" />, href: 'https://github.com/harshvardhan-sarvaiya', ariaLabel: 'GitHub' },
+  { icon: <Linkedin className="h-5 w-5" />, href: 'https://linkedin.com/in/harshvardhan-sarvaiya', ariaLabel: 'LinkedIn' },
+  { icon: <Twitter className="h-5 w-5" />, href: 'https://twitter.com/harshvardhansinh', ariaLabel: 'Twitter' },
+  { icon: <Instagram className="h-5 w-5" />, href: 'https://instagram.com/harshvardhansinh', ariaLabel: 'Instagram' },
+  { icon: <Mail className="h-5 w-5" />, href: 'mailto:contact@harshvardhansinh.dev', ariaLabel: 'Email' },
 ];
 
 const Footer: React.FC = () => {
@@ -27,12 +35,29 @@ const Footer: React.FC = () => {
               <span className="text-accent">.dev</span>
             </a>
             <p className="mt-2 text-gray-400">Software Developer & Tech Enthusiast</p>
+            
+            {/* Social Media Icons */}
+            <div className="flex space-x-4 mt-4">
+              {socialLinks.map((link, index) => (
+                <a 
+                  key={index}
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={link.ariaLabel}
+                  className="text-gray-400 hover:text-accent transition-colors"
+                >
+                  {link.icon}
+                </a>
+              ))}
+            </div>
           </div>
           
           <div className="flex flex-col mb-6 md:mb-0 items-center md:items-end">
             <p className="text-gray-400 mb-2">Download my resume</p>
             <a 
-              href="#" 
+              href="/New Resume.pdf" 
+              download
               className="px-6 py-2 bg-accent text-white rounded-md hover:bg-opacity-90 transition-all duration-300 flex items-center gap-2"
             >
               <Download className="h-5 w-5" />

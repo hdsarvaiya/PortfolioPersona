@@ -8,7 +8,7 @@ interface ThemeContextType {
 }
 
 export const ThemeContext = createContext<ThemeContextType>({
-  theme: 'light',
+  theme: 'dark',
   toggleTheme: () => {},
 });
 
@@ -17,18 +17,18 @@ interface ThemeProviderProps {
 }
 
 export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
-  const [theme, setTheme] = useState<Theme>('light');
+  const [theme, setTheme] = useState<Theme>('dark');
 
   useEffect(() => {
-    // Check for saved theme preference or use system preference
+    // Check for saved theme preference or default to dark mode
     const savedTheme = localStorage.getItem('theme');
     
-    if (savedTheme === 'dark') {
-      setTheme('dark');
-    } else if (savedTheme === 'light') {
+    if (savedTheme === 'light') {
       setTheme('light');
-    } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    } else {
+      // Set dark mode as default
       setTheme('dark');
+      localStorage.setItem('theme', 'dark');
     }
   }, []);
 

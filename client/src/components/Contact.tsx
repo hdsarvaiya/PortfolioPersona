@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useReveal } from '@/hooks/use-reveal';
 import { SectionHeading } from './ui/section-heading';
-import { Mail, Phone, MapPin, GitPullRequest, Linkedin, Twitter, Instagram } from 'lucide-react';
+import { Mail, Phone, MapPin, GitPullRequest, Linkedin, Twitter, Instagram, Github } from 'lucide-react';
 import { useMutation } from '@tanstack/react-query';
 import { apiRequest } from '@/lib/queryClient';
 import { contactFormSchema } from '@shared/schema';
@@ -195,10 +195,11 @@ const ContactInfo: React.FC<ContactInfoProps> = ({ icon, title, value, link }) =
 
 const SocialLinks: React.FC = () => {
   const socialLinks = [
-    { icon: <GitPullRequest className="h-5 w-5" />, href: "#" },
-    { icon: <Linkedin className="h-5 w-5" />, href: "#" },
-    { icon: <Twitter className="h-5 w-5" />, href: "#" },
-    { icon: <Instagram className="h-5 w-5" />, href: "#" },
+    { icon: <Github className="h-5 w-5" />, href: 'https://github.com/harshvardhan-sarvaiya', ariaLabel: 'GitHub' },
+    { icon: <Linkedin className="h-5 w-5" />, href: 'https://linkedin.com/in/harshvardhan-sarvaiya', ariaLabel: 'LinkedIn' },
+    { icon: <Twitter className="h-5 w-5" />, href: 'https://twitter.com/harshvardhansinh', ariaLabel: 'Twitter' },
+    { icon: <Instagram className="h-5 w-5" />, href: 'https://instagram.com/harshvardhansinh', ariaLabel: 'Instagram' },
+    { icon: <Mail className="h-5 w-5" />, href: 'mailto:contact@harshvardhansinh.dev', ariaLabel: 'Email' },
   ];
   
   return (
@@ -210,6 +211,7 @@ const SocialLinks: React.FC = () => {
           className="w-10 h-10 rounded-full bg-accent bg-opacity-10 flex items-center justify-center text-accent hover:bg-accent hover:text-white transition-colors duration-300"
           target="_blank" 
           rel="noopener noreferrer"
+          aria-label={link.ariaLabel}
         >
           {link.icon}
         </a>

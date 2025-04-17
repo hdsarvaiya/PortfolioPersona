@@ -41,21 +41,17 @@ const Hero: React.FC = () => {
           animate={isActive ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, ease: "easeOut" }}
         >
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight mb-8 text-white">
-            Welcome to <span className="block mt-2">My Portfolio</span>
+          {/* Highlighted Name */}
+          <h1 className="text-5xl sm:text-6xl md:text-7xl font-extrabold leading-tight mb-8 text-white">
+            <span className="text-[#aaff00]">Harshvardhansinh </span>
+            <span className="text-white">Sarvaiya</span>
           </h1>
           
-          <div className="mb-10">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight">
-              <span className="text-white">Harshvardhansinh </span>
-              <span className="text-[#aaff00]">Sarvaiya</span>
-            </h2>
-            <p className="text-2xl mt-2 font-light text-[#aaff00]">
-              Software Developer
-            </p>
-          </div>
+          <p className="text-2xl mt-2 font-light text-[#aaff00]">
+            Full-Stack Developer
+          </p>
           
-          <p className="text-md md:text-lg mx-auto max-w-2xl text-gray-300 mb-10">
+          <p className="text-md md:text-lg mx-auto max-w-2xl text-gray-300 mb-10 mt-4">
             Specializing in creating modern web applications with ReactJS, NodeJS, and various 
             cutting-edge technologies to deliver innovative digital solutions.
           </p>

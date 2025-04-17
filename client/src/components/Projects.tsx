@@ -1,8 +1,23 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useReveal } from '@/hooks/use-reveal';
-import { SectionHeading } from './ui/section-heading';
 import { ArrowRight } from 'lucide-react';
+
+export interface SectionHeadingProps {
+  title: string;
+  subtitle: string;
+  titleClassName?: string; // Optional title class name
+  subtitleClassName?: string; // Optional subtitle class name
+}
+
+const SectionHeading: React.FC<SectionHeadingProps> = ({ title, subtitle, titleClassName, subtitleClassName }) => {
+  return (
+    <div className="text-center mb-12">
+      <h2 className={`text-3xl font-bold ${titleClassName || ''}`}>{title}</h2>
+      <p className={`text-gray-600 ${subtitleClassName || ''}`}>{subtitle}</p>
+    </div>
+  );
+};
 
 interface ProjectTag {
   name: string;
@@ -63,11 +78,11 @@ interface ProjectCardProps {
 
 const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
   const { ref, isActive } = useReveal();
-  
+
   return (
     <motion.div 
       ref={ref}
-      className={`project-card bg-white dark:bg-gray-900 rounded-xl overflow-hidden shadow-lg reveal ${isActive ? 'active' : ''}`}
+      className={`project-card bg-black border border-[#aaff00] rounded-xl overflow-hidden shadow-lg reveal ${isActive ? 'active' : ''}`}
       initial={{ opacity: 0, y: 30 }}
       animate={isActive ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.6, delay: index * 0.1, ease: "easeOut" }}
@@ -80,18 +95,18 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
         />
       </div>
       <div className="p-6">
-        <h3 className="text-xl font-bold mb-2">{project.title}</h3>
-        <p className="text-gray-700 dark:text-gray-300 mb-4">
+        <h3 className="text-xl font-bold mb-2 text-[#aaff00]">{project.title}</h3>
+        <p className="text-gray-300 mb-4">
           {project.description}
         </p>
         <div className="flex flex-wrap gap-2 mb-6">
           {project.tags.map((tag, idx) => (
-            <span key={idx} className="px-3 py-1 bg-accent bg-opacity-10 text-accent rounded-full text-sm">
+            <span key={idx} className="px-3 py-1 bg-[#aaff00] bg-opacity-10 text-[#aaff00] rounded-full text-sm">
               {tag.name}
             </span>
           ))}
         </div>
-        <a href={project.link} className="text-accent font-medium hover:underline flex items-center gap-2 group">
+        <a href={project.link} className="text-[#aaff00] font-medium hover:underline flex items-center gap-2 group">
           View Details 
           <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
         </a>
@@ -102,11 +117,11 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
 
 const LTProjects: React.FC = () => {
   const { ref, isActive } = useReveal();
-  
+
   return (
     <motion.div 
       ref={ref}
-      className={`project-card bg-white dark:bg-gray-900 rounded-xl overflow-hidden shadow-lg md:col-span-3 reveal ${isActive ? 'active' : ''}`}
+      className={`project-card bg-black border border-[#aaff00] rounded-xl overflow-hidden shadow-lg md:col-span-3 reveal ${isActive ? 'active' : ''}`}
       initial={{ opacity: 0, y: 30 }}
       animate={isActive ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
@@ -127,45 +142,45 @@ const LTProjects: React.FC = () => {
               className="h-10 w-auto mr-4"
             />
             <div>
-              <h3 className="text-2xl font-bold">L&T Technical Services</h3>
-              <p className="text-gray-600 dark:text-gray-400">Internship Projects</p>
+              <h3 className="text-2xl font-bold text-[#aaff00]">L&T Technical Services</h3>
+              <p className="text-gray-400">Internship Projects</p>
             </div>
           </div>
-          
+
           <div className="grid md:grid-cols-2 gap-6 mt-6">
             <div>
-              <h4 className="font-bold text-lg mb-2">Network Monitoring Software</h4>
-              <p className="text-gray-700 dark:text-gray-300 mb-3">
+              <h4 className="font-bold text-lg mb-2 text-[#aaff00]">Network Monitoring Software</h4>
+              <p className="text-gray-300 mb-3">
                 Built with ReactJS and Node to monitor 1000+ network devices with graphical representation for easier troubleshooting.
               </p>
               <div className="flex flex-wrap gap-2">
-                <span className="px-3 py-1 bg-accent bg-opacity-10 text-accent rounded-full text-sm">ReactJS</span>
-                <span className="px-3 py-1 bg-accent bg-opacity-10 text-accent rounded-full text-sm">Node</span>
-                <span className="px-3 py-1 bg-accent bg-opacity-10 text-accent rounded-full text-sm">Networking</span>
-              </div>
-            </div>
-            
-            <div>
-              <h4 className="font-bold text-lg mb-2">Inventory Management Software</h4>
-              <p className="text-gray-700 dark:text-gray-300 mb-3">
-                Created a system that automates maintenance reminder emails with ReactJS frontend, Node backend, and MongoDB.
-              </p>
-              <div className="flex flex-wrap gap-2">
-                <span className="px-3 py-1 bg-accent bg-opacity-10 text-accent rounded-full text-sm">ReactJS</span>
-                <span className="px-3 py-1 bg-accent bg-opacity-10 text-accent rounded-full text-sm">Bootstrap</span>
-                <span className="px-3 py-1 bg-accent bg-opacity-10 text-accent rounded-full text-sm">Node</span>
-                <span className="px-3 py-1 bg-accent bg-opacity-10 text-accent rounded-full text-sm">Express</span>
-                <span className="px-3 py-1 bg-accent bg-opacity-10 text-accent rounded-full text-sm">MongoDB</span>
+                <span className="px-3 py-1 bg-[#aaff00] bg-opacity-10 text-[#aaff00] rounded-full text-sm">ReactJS</span>
+                <span className="px-3 py-1 bg-[#aaff00] bg-opacity-10 text-[#aaff00] rounded-full text-sm">Node</span>
+                <span className="px-3 py-1 bg-[#aaff00] bg-opacity-10 text-[#aaff00] rounded-full text-sm">Networking</span>
               </div>
             </div>
 
             <div>
-              <h4 className="font-bold text-lg mb-2">Web Scraping Project</h4>
-              <p className="text-gray-700 dark:text-gray-300 mb-3">
+              <h4 className="font-bold text-lg mb-2 text-[#aaff00]">Inventory Management Software</h4>
+              <p className="text-gray-300 mb-3">
+                Created a system that automates maintenance reminder emails with ReactJS frontend, Node backend, and MongoDB.
+              </p>
+              <div className="flex flex-wrap gap-2">
+                <span className="px-3 py-1 bg-[#aaff00] bg-opacity-10 text-[#aaff00] rounded-full text-sm">ReactJS</span>
+                <span className="px-3 py-1 bg-[#aaff00] bg-opacity-10 text-[#aaff00] rounded-full text-sm">Bootstrap</span>
+                <span className="px-3 py-1 bg-[#aaff00] bg-opacity-10 text-[#aaff00] rounded-full text-sm">Node</span>
+                <span className="px-3 py-1 bg-[#aaff00] bg-opacity-10 text-[#aaff00] rounded-full text-sm">Express</span>
+                <span className="px-3 py-1 bg-[#aaff00] bg-opacity-10 text-[#aaff00] rounded-full text-sm">MongoDB</span>
+              </div>
+            </div>
+
+            <div>
+              <h4 className="font-bold text-lg mb-2 text-[#aaff00]">Web Scraping Project</h4>
+              <p className="text-gray-300 mb-3">
                 Python-based scraper to gather data for internal use at L&T.
               </p>
               <div className="flex flex-wrap gap-2">
-                <span className="px-3 py-1 bg-accent bg-opacity-10 text-accent rounded-full text-sm">Python</span>
+                <span className="px-3 py-1 bg-[#aaff00] bg-opacity-10 text-[#aaff00] rounded-full text-sm">Python</span>
               </div>
             </div>
           </div>
@@ -177,11 +192,13 @@ const LTProjects: React.FC = () => {
 
 const Projects: React.FC = () => {
   return (
-    <section id="projects" className="py-20 md:py-32 bg-gray-100 dark:bg-gray-900">
+    <section id="projects" className="py-20 md:py-32 bg-black">
       <div className="container mx-auto px-4 md:px-8">
         <SectionHeading 
           title="Featured Projects"
           subtitle="A showcase of my recent work, spanning from AI-based applications to drag-and-drop website builders."
+          titleClassName="text-[#aaff00]" // Green title
+          subtitleClassName="text-white mt-4" // White subtitle with spacing
         />
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

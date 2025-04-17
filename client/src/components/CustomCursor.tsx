@@ -58,7 +58,7 @@ const CustomCursor: React.FC = () => {
 
   return (
     <motion.div 
-      className="custom-cursor fixed w-6 h-6 bg-accent rounded-full pointer-events-none z-50 hidden lg:block"
+      className="custom-cursor fixed w-6 h-6 bg-[#aaff00] rounded-full pointer-events-none z-50 hidden lg:block"
       animate={{
         opacity: 1,
         x: position.x - 12,

@@ -245,14 +245,14 @@ const ContactInformation: React.FC = () => {
           <ContactInfo 
             icon={<Phone className="h-5 w-5 text-[#aaff00]" />} 
             title="Phone" 
-            value="+91 8022000056" 
-            link="tel:+918022000056" 
+            value="+91 6356671251" 
+            link="tel:+916356671251" 
           />
           
           <ContactInfo 
             icon={<MapPin className="h-5 w-5 text-[#aaff00]" />}
             title="Location" 
-            value="Baroda, Gujarat, India"
+            value="Vadodara, Gujarat, India"
           />
         </div>
       </motion.div>
@@ -273,7 +273,7 @@ const ContactInformation: React.FC = () => {
 
 const Contact: React.FC = () => {
   return (
-    <section id="contact" className="py-20 md:py-32">
+    <section id="contact" className="py-20 md:py-32 bg-black">
       <div className="container mx-auto px-4 md:px-8">
         <SectionHeading 
           title="Get In Touch"

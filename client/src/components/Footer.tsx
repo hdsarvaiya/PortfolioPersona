@@ -11,10 +11,9 @@ const navItems = [
 ];
 
 const socialLinks = [
-  { icon: <Github className="h-5 w-5" />, href: 'https://github.com/harshvardhan-sarvaiya', ariaLabel: 'GitHub' },
-  { icon: <Linkedin className="h-5 w-5" />, href: 'https://linkedin.com/in/harshvardhan-sarvaiya', ariaLabel: 'LinkedIn' },
-  { icon: <Twitter className="h-5 w-5" />, href: 'https://twitter.com/harshvardhansinh', ariaLabel: 'Twitter' },
-  { icon: <Instagram className="h-5 w-5" />, href: 'https://instagram.com/harshvardhansinh', ariaLabel: 'Instagram' },
+  { icon: <Github className="h-5 w-5" />, href: 'https://github.com/hdsarvaiya', ariaLabel: 'GitHub' },
+  { icon: <Linkedin className="h-5 w-5" />, href: 'https://www.linkedin.com/in/harshvardhansinh-sarvaiya-/', ariaLabel: 'LinkedIn' },
+  { icon: <Instagram className="h-5 w-5" />, href: 'https://instagram.com/hd_sarvaiya', ariaLabel: 'Instagram' },
   { icon: <Mail className="h-5 w-5" />, href: 'mailto:contact@harshvardhansinh.dev', ariaLabel: 'Email' },
 ];
 
@@ -26,13 +25,13 @@ const Footer: React.FC = () => {
   };
 
   return (
-    <footer className="bg-gray-900 text-white py-12">
+    <footer className="bg-black text-white py-12">
       <div className="container mx-auto px-4 md:px-8">
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="mb-6 md:mb-0">
             <a href="#home" onClick={(e) => handleNavClick(e, '#home')} className="text-2xl font-bold">
               <span className="font-young-serif">Harshvardhansinh</span>
-              <span className="text-accent">.dev</span>
+              <span className="text-[#aaff00]">.dev</span>
             </a>
             <p className="mt-2 text-gray-400">Software Developer & Tech Enthusiast</p>
             
@@ -56,9 +55,9 @@ const Footer: React.FC = () => {
           <div className="flex flex-col mb-6 md:mb-0 items-center md:items-end">
             <p className="text-gray-400 mb-2">Download my resume</p>
             <a 
-              href="/New Resume.pdf" 
+              href="./attached_assests/New Resume.pdf" 
               download
-              className="px-6 py-2 bg-accent text-white rounded-md hover:bg-opacity-90 transition-all duration-300 flex items-center gap-2"
+              className="px-6 py-2 bg-[#aaff00] text-black rounded-md hover:bg-opacity-90 transition-all duration-300 flex items-center gap-2"
             >
               <Download className="h-5 w-5" />
               Resume

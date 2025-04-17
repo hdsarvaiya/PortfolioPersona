@@ -4,6 +4,13 @@ import { useReveal } from '@/hooks/use-reveal';
 import { SectionHeading } from './ui/section-heading';
 import { Briefcase, GraduationCap, Check } from 'lucide-react';
 
+export interface SectionHeadingProps {
+  title: string;
+  subtitle: string;
+  titleClassName?: string; // Optional title class name
+  subtitleClassName?: string; // Optional subtitle class name
+}
+
 interface TimelineItem {
   title: string;
   organization: string;
@@ -68,7 +75,7 @@ const achievements: string[] = [
 const Timeline: React.FC<{ data: TimelineItem[] }> = ({ data }) => {
   return (
     <div className="relative pl-10 space-y-8 mb-12">
-      <div className="timeline-line"></div>
+      <div className="timeline-line bg-[#aaff00]"></div>
       
       {data.map((item, index) => {
         const { ref, isActive } = useReveal();
@@ -82,20 +89,20 @@ const Timeline: React.FC<{ data: TimelineItem[] }> = ({ data }) => {
             animate={isActive ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.5, delay: index * 0.1 }}
           >
-            <div className="timeline-dot"></div>
+            <div className="timeline-dot bg-[#aaff00]"></div>
             <div className="ml-8">
               <div className="flex flex-wrap justify-between items-start mb-2">
-                <h4 className="text-xl font-bold">{item.title}</h4>
-                <span className="text-sm bg-accent text-white px-3 py-1 rounded-full">
+                <h4 className="text-xl font-bold text-[#aaff00]">{item.title}</h4>
+                <span className="text-sm bg-[#aaff00] text-white px-3 py-1 rounded-full">
                   {item.period}
                 </span>
               </div>
-              <p className="text-accent font-medium mb-1">{item.organization}</p>
-              <p className="text-gray-700 dark:text-gray-300 mb-3">
+              <p className="text-gray-300 font-medium mb-1">{item.organization}</p>
+              <p className="text-gray-400 mb-3">
                 {item.description}
               </p>
               {item.items && (
-                <ul className="list-disc list-inside text-gray-700 dark:text-gray-300 space-y-1">
+                <ul className="list-disc list-inside text-gray-400 space-y-1">
                   {item.items.map((listItem, i) => (
                     <li key={i}>{listItem}</li>
                   ))}
@@ -115,7 +122,7 @@ const Education: React.FC = () => {
   return (
     <motion.div 
       ref={ref}
-      className={`bg-white dark:bg-gray-900 rounded-xl overflow-hidden shadow-lg reveal ${isActive ? 'active' : ''}`}
+      className={`bg-white dark:bg-zinc-950 rounded-xl overflow-hidden shadow-lg reveal ${isActive ? 'active' : ''}`}
       initial={{ opacity: 0, y: 30 }}
       animate={isActive ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.6, ease: "easeOut" }}
@@ -125,10 +132,10 @@ const Education: React.FC = () => {
           <div key={index} className={index !== educationData.length - 1 ? 'mb-8' : ''}>
             <div className="flex justify-between items-start flex-wrap gap-2 mb-2">
               <h4 className="text-xl font-bold">{item.title}</h4>
-              <span className="text-sm font-semibold">{item.period}</span>
+              <span className="text-sm text-white font-semibold">{item.period}</span>
             </div>
-            <p className="text-accent font-medium mb-1">{item.organization}</p>
-            <p className="text-gray-700 dark:text-gray-300">{item.score}</p>
+            <p className="text-[#aaff00] font-medium mb-1">{item.organization}</p>
+            <p className="text-black dark:text-gray-300">{item.score}</p>
           </div>
         ))}
       </div>
@@ -142,7 +149,7 @@ const Achievements: React.FC = () => {
   return (
     <motion.div 
       ref={ref}
-      className={`mt-10 bg-white dark:bg-gray-900 rounded-xl overflow-hidden shadow-lg reveal ${isActive ? 'active' : ''}`}
+      className={`mt-10 bg-white dark:bg-zinc-950 rounded-xl overflow-hidden shadow-lg reveal ${isActive ? 'active' : ''}`}
       initial={{ opacity: 0, y: 30 }}
       animate={isActive ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
@@ -151,8 +158,8 @@ const Achievements: React.FC = () => {
         <h4 className="text-xl font-bold mb-4">Achievements</h4>
         <ul className="space-y-3">
           {achievements.map((achievement, index) => (
-            <li key={index} className="flex items-start">
-              <Check className="h-6 w-6 text-accent mr-2 flex-shrink-0" />
+            <li key={index} className="flex items-start text-white">
+              <Check className="h-6 w-6 text-[#aaff00] mr-2 flex-shrink-0" />
               <span>{achievement}</span>
             </li>
           ))}
@@ -167,7 +174,7 @@ const Experience: React.FC = () => {
   const { ref: eduRef, isActive: eduActive } = useReveal();
   
   return (
-    <section id="experience" className="py-20 md:py-32 bg-white dark:bg-gray-950">
+    <section id="experience" className="py-20 md:py-32 bg-black">
       <div className="container mx-auto px-4 md:px-8">
         <SectionHeading 
           title="Experience & Education"
@@ -175,39 +182,41 @@ const Experience: React.FC = () => {
         />
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+          {/* Professional Experience */}
           <motion.div 
-            ref={expRef}
-            className={`reveal ${expActive ? 'active' : ''}`}
-            initial={{ opacity: 0, y: 30 }}
-            animate={expActive ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, ease: "easeOut" }}
+        ref={expRef}
+        className={`reveal ${expActive ? 'active' : ''}`}
+        initial={{ opacity: 0, y: 30 }}
+        animate={expActive ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.6, ease: "easeOut" }}
           >
-            <h3 className="text-2xl font-bold mb-8 flex items-center">
-              <span className="w-10 h-10 flex items-center justify-center bg-accent text-white rounded-full mr-3">
-                <Briefcase className="h-5 w-5" />
-              </span>
-              Professional Experience
-            </h3>
-            
-            <Timeline data={experienceData} />
+        <h3 className="text-2xl font-bold mb-8 flex items-center text-[#aaff00]">
+          <span className="w-10 h-10 flex items-center justify-center bg-[#aaff00] text-black rounded-full mr-3">
+            <Briefcase className="h-5 w-5" />
+          </span>
+          Professional Experience
+        </h3>
+        
+        <Timeline data={experienceData} />
           </motion.div>
           
+          {/* Education */}
           <motion.div 
-            ref={eduRef}
-            className={`reveal ${eduActive ? 'active' : ''}`}
-            initial={{ opacity: 0, y: 30 }}
-            animate={eduActive ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, ease: "easeOut" }}
+        ref={eduRef}
+        className={`reveal ${eduActive ? 'active' : ''}`}
+        initial={{ opacity: 0, y: 30 }}
+        animate={eduActive ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.6, ease: "easeOut" }}
           >
-            <h3 className="text-2xl font-bold mb-8 flex items-center">
-              <span className="w-10 h-10 flex items-center justify-center bg-accent text-white rounded-full mr-3">
-                <GraduationCap className="h-5 w-5" />
-              </span>
-              Education
-            </h3>
-            
-            <Education />
-            <Achievements />
+        <h3 className="text-2xl font-bold mb-8 flex items-center text-[#aaff00]">
+          <span className="w-10 h-10 flex items-center justify-center bg-[#aaff00] text-black rounded-full mr-3">
+            <GraduationCap className="h-5 w-5" />
+          </span>
+          Education
+        </h3>
+        
+        <Education />
+        <Achievements />
           </motion.div>
         </div>
       </div>
